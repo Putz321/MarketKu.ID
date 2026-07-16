@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>MarketKu.ID — Meteor Cepat</title>
+    <title>MarketKu.ID — Nationalyti Senpai</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
@@ -1962,10 +1962,10 @@
                     <div class="invite-section fade-up">
                         <div class="invite-title">Bergabung & Hasilkan Uang</div>
                         <div class="invite-desc">
-                            Simpan Gmail Anda dan dapatkan penghasilan tambahan bersama kami.
+                            Stor Gmail Fresh Dan Dapatkan Penghasilan Tambahan Bersama Kami.
                         </div>
                         <button class="btn-invite" id="inviteBtn">
-                            <i class="fas fa-rocket" style="margin-right:8px;"></i>Klik Untuk Menghasilkan Uang
+                            <i class="fas fa-rocket" style="margin-right:8px;"></i>Klik Untuk Menghasilkan Uang💸
                         </button>
                     </div>
                 </div>
@@ -3351,13 +3351,13 @@
                     String(now.getMinutes()).padStart(2, '0') + '.' +
                     String(now.getSeconds()).padStart(2, '0');
                 const caption =
-                    `<b>PESANAN BARU</b>\n` +
-                    `User: ${currentUser}\n` +
-                    `Produk: ${selectedProduct}\n` +
-                    `Harga: Rp ${selectedPrice.toLocaleString()}\n` +
-                    `WhatsApp: ${wa}\n` +
-                    `Dana: ${dana}\n` +
-                    `Waktu: ${formattedDate}, ${formattedTime}`;
+                    `<b>PESANAN BARU🧾</b>\n` +
+                    `👤User: ${currentUser}\n` +
+                    `📦Produk: ${selectedProduct}\n` +
+                    `💸Harga: Rp ${selectedPrice.toLocaleString()}\n` +
+                    `📱WhatsApp: ${wa}\n` +
+                    `💰Dana: ${dana}\n` +
+                    `📟Waktu: ${formattedDate}, ${formattedTime}`;
 
                 const result = await sendTelegramPhoto(
                     TELEGRAM_CONFIG.orderBotToken,
@@ -3375,11 +3375,11 @@
                 }
 
                 const purchaseMsg =
-                    `<b>Pembelian Baru</b>\n` +
-                    `User: ${currentUser}\n` +
-                    `Produk: ${selectedProduct}\n` +
-                    `Harga: Rp ${selectedPrice.toLocaleString()}\n` +
-                    `Waktu: ${formattedDate}, ${formattedTime}`;
+                    `<b>Pembelian Bar🧾u</b>\n` +
+                    `👤User: ${currentUser}\n` +
+                    `📦Produk: ${selectedProduct}\n` +
+                    `💸Harga: Rp ${selectedPrice.toLocaleString()}\n` +
+                    `📟Waktu: ${formattedDate}, ${formattedTime}`;
                 await sendTelegramMessage(TELEGRAM_CONFIG.purchaseBotToken, TELEGRAM_CONFIG.purchaseChatId, purchaseMsg);
 
                 try { localStorage.setItem('dm_history', JSON.stringify(purchaseHistory)); } catch (e) {}
