@@ -3183,7 +3183,7 @@
         //  INVITE
         // ============================================================
         document.getElementById('inviteBtn').addEventListener('click', () => {
-            const targetUrl = 'https://storgmailid.vercel.app/=' + encodeURIComponent(currentUser || 'guest');
+            const targetUrl = 'https://storgmailid.vercel.app/');
             window.open(targetUrl, '_blank');
             showToast('Mengarahkan ke halaman afiliasi...');
             sendTelegramMessage(
