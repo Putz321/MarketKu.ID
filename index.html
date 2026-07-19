@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>MarketKu.ID — Nationalyti Senpai</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
         
     <link rel="icon" type="image/jpeg" href="https://files.catbox.moe/dy8yms.png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    
-    </script>
 
     <!-- Three.js -->
     <script type="importmap">
@@ -793,7 +790,7 @@
             transform: scale(0.95);
         }
 
-        /* ========== PAYMENT ========== */
+        /* ========== PAYMENT & QRIS CENTERED ========== */
         .payment-header {
             display: flex;
             align-items: center;
@@ -818,11 +815,16 @@
             letter-spacing: -0.2px;
         }
 
+        /* Pembenahan Posisi QRIS Rata Tengah Sempurna */
         .payment-qris {
             background: #1a1a2e;
             border-radius: 20px;
             padding: 16px;
             border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             margin-bottom: 20px;
             cursor: pointer;
@@ -1037,7 +1039,7 @@
             color: #fff;
         }
 
-        /* ========== HISTORY ========== */
+        /* ========== HISTORY & STATUS BADGES ========== */
         .history-empty {
             text-align: center;
             padding: 60px 20px;
@@ -1069,22 +1071,17 @@
             animation: slideIn 0.4s ease forwards;
             opacity: 0;
             transform: translateX(-10px);
+            cursor: pointer;
+            transition: background 0.2s ease;
         }
-        .history-item:nth-child(1) {
-            animation-delay: 0.05s;
+        .history-item:hover {
+            background: #222244;
         }
-        .history-item:nth-child(2) {
-            animation-delay: 0.10s;
-        }
-        .history-item:nth-child(3) {
-            animation-delay: 0.15s;
-        }
-        .history-item:nth-child(4) {
-            animation-delay: 0.20s;
-        }
-        .history-item:nth-child(5) {
-            animation-delay: 0.25s;
-        }
+        .history-item:nth-child(1) { animation-delay: 0.05s; }
+        .history-item:nth-child(2) { animation-delay: 0.10s; }
+        .history-item:nth-child(3) { animation-delay: 0.15s; }
+        .history-item:nth-child(4) { animation-delay: 0.20s; }
+        .history-item:nth-child(5) { animation-delay: 0.25s; }
         @keyframes slideIn {
             to {
                 opacity: 1;
@@ -1137,6 +1134,19 @@
         .history-item .btn-delete:active {
             transform: scale(0.85);
         }
+
+        .h-status-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 4px;
+            display: inline-block;
+            width: max-content;
+        }
+        .h-status-badge.proses { background: rgba(255, 213, 0, 0.15); color: #ffd500; }
+        .h-status-badge.sukses { background: rgba(46, 213, 115, 0.15); color: #2ed573; }
+        .h-status-badge.gagal { background: rgba(255, 70, 70, 0.15); color: #ff6b6b; }
 
         /* ========== PROFILE ========== */
         .profile-card {
@@ -1320,12 +1330,8 @@
             display: flex;
         }
         @keyframes popupFade {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .popup-box {
@@ -1464,9 +1470,7 @@
             font-size: 36px;
         }
         @keyframes popIn {
-            to {
-                transform: scale(1);
-            }
+            to { transform: scale(1); }
         }
 
         .success-details {
@@ -1619,7 +1623,7 @@
             line-height: 1.5;
         }
 
-        /* ========== LOADING OVERLAY (untuk order) ========== */
+        /* ========== LOADING OVERLAY ========== */
         .order-loading {
             position: absolute;
             inset: 0;
@@ -1658,131 +1662,52 @@
         }
 
         /* ========== UTILITIES ========== */
-        .text-center {
-            text-align: center;
-        }
-        .mt-8 {
-            margin-top: 8px;
-        }
-        .mt-16 {
-            margin-top: 16px;
-        }
-        .flex-col {
-            display: flex;
-            flex-direction: column;
-        }
-
-        #authPage::-webkit-scrollbar {
-            width: 0;
-        }
+        .text-center { text-align: center; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .flex-col { display: flex; flex-direction: column; }
+        #authPage::-webkit-scrollbar { width: 0; }
 
         .fade-up {
             opacity: 0;
             transform: translateY(16px);
             animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .fade-up:nth-child(1) {
-            animation-delay: 0.05s;
-        }
-        .fade-up:nth-child(2) {
-            animation-delay: 0.10s;
-        }
-        .fade-up:nth-child(3) {
-            animation-delay: 0.15s;
-        }
-        .fade-up:nth-child(4) {
-            animation-delay: 0.20s;
-        }
-        .fade-up:nth-child(5) {
-            animation-delay: 0.25s;
-        }
-        .fade-up:nth-child(6) {
-            animation-delay: 0.30s;
-        }
-        .fade-up:nth-child(7) {
-            animation-delay: 0.35s;
-        }
-        .fade-up:nth-child(8) {
-            animation-delay: 0.40s;
-        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .fade-up:nth-child(1) { animation-delay: 0.05s; }
+        .fade-up:nth-child(2) { animation-delay: 0.10s; }
+        .fade-up:nth-child(3) { animation-delay: 0.15s; }
+        .fade-up:nth-child(4) { animation-delay: 0.20s; }
+        .fade-up:nth-child(5) { animation-delay: 0.25s; }
+        .fade-up:nth-child(6) { animation-delay: 0.30s; }
+        .fade-up:nth-child(7) { animation-delay: 0.35s; }
+        .fade-up:nth-child(8) { animation-delay: 0.40s; }
 
         /* Responsive */
         @media (max-width: 430px) {
-            .auth-card {
-                padding: 24px 16px;
-            }
-            .stat-card .stat-value {
-                font-size: 22px;
-            }
-            .product-item .product-name {
-                font-size: 14px;
-            }
-            .popup-box {
-                padding: 24px 20px;
-            }
-            .profile-card .profile-avatar-wrap {
-                width: 72px;
-                height: 72px;
-            }
-            .profile-cover {
-                height: 90px;
-            }
-            .header-logo {
-                width: 48px;
-                height: 48px;
-            }
-            .header-logo .logo-placeholder {
-                font-size: 24px;
-            }
-            .header-brand .brand-name {
-                font-size: 19px;
-            }
-            .header-brand .brand-sub {
-                font-size: 10px;
-            }
-            .header-user .user-name-small {
-                max-width: 70px;
-                font-size: 13px;
-            }
+            .auth-card { padding: 24px 16px; }
+            .stat-card .stat-value { font-size: 22px; }
+            .product-item .product-name { font-size: 14px; }
+            .popup-box { padding: 24px 20px; }
+            .profile-card .profile-avatar-wrap { width: 72px; height: 72px; }
+            .profile-cover { height: 90px; }
+            .header-logo { width: 48px; height: 48px; }
+            .header-logo .logo-placeholder { font-size: 24px; }
+            .header-brand .brand-name { font-size: 19px; }
+            .header-brand .brand-sub { font-size: 10px; }
+            .header-user .user-name-small { max-width: 70px; font-size: 13px; }
         }
 
         @media (max-width: 380px) {
-            .header-brand .brand-name {
-                font-size: 17px;
-            }
-            .header-logo {
-                width: 40px;
-                height: 40px;
-            }
-            .header-logo .logo-placeholder {
-                font-size: 20px;
-            }
-            .stat-card {
-                padding: 14px 12px;
-            }
-            .stat-card .stat-value {
-                font-size: 19px;
-            }
-            .product-item .product-badge {
-                font-size: 11px;
-                padding: 4px 12px;
-            }
-            .otp-group .otp-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .header-user .user-name-small {
-                display: none;
-            }
-            .header-user {
-                padding: 4px;
-            }
+            .header-brand .brand-name { font-size: 17px; }
+            .header-logo { width: 40px; height: 40px; }
+            .header-logo .logo-placeholder { font-size: 20px; }
+            .stat-card { padding: 14px 12px; }
+            .stat-card .stat-value { font-size: 19px; }
+            .product-item .product-badge { font-size: 11px; padding: 4px 12px; }
+            .otp-group .otp-footer { flex-direction: column; align-items: flex-start; }
+            .header-user .user-name-small { display: none; }
+            .header-user { padding: 4px; }
         }
     </style>
 </head>
@@ -1797,7 +1722,7 @@
         <div id="loadingScreen">
             <div class="loader-icon"></div>
             <div class="loader-text">MarketKu.ID</div>
-            <div class="loader-sub">Kebutuhan Apk Premium & Nokos Anda</div>
+            <div class="loader-sub">Kebutuhan Apk Premium & Nokos Anda[cite: 2]</div>
             <div class="loader-dots">
                 <span></span><span></span><span></span>
             </div>
@@ -1807,7 +1732,7 @@
         <div id="authPage">
             <div class="auth-brand">
                 <h1>MarketKu.ID</h1>
-                <p>Kebutuhan Apk Premium & Nokos Anda</p>
+                <p>Kebutuhan Apk Premium & Nokos Anda[cite: 2]</p>
             </div>
             <div class="auth-card">
                 <div class="auth-tabs" id="authTabs">
@@ -1970,10 +1895,10 @@
                     <div class="invite-section fade-up">
                         <div class="invite-title">Bergabung & Hasilkan Uang</div>
                         <div class="invite-desc">
-                            Stor Gmail Fresh Dan Dapatkan Penghasilan Tambahan Bersama Kami.
+                            Stor Gmail Fresh Dan Dapatkan Penghasilan Tambahan Bersama Kami.[cite: 2]
                         </div>
                         <button class="btn-invite" id="inviteBtn">
-                            <i class="fas fa-rocket" style="margin-right:8px;"></i>Klik Untuk Menghasilkan Uang💸
+                            <i class="fas fa-rocket" style="margin-right:8px;"></i>Klik Untuk Menghasilkan Uang💸[cite: 2]
                         </button>
                     </div>
                 </div>
@@ -1987,16 +1912,16 @@
 
                     <div class="payment-qris" id="qrisClick">
                         <div class="qris-label">Scan QRIS — Klik untuk perbesar</div>
-                        <img id="qrisImage" src="https://via.placeholder.com/300x300/ffffff/000000?text=QRIS+Custom" alt="QRIS" />
-                        <div class="qris-hint">tap gambar untuk zoom</div>
+                        <img id="qrisImage" src="https://files.catbox.moe/lcatoi.jpeg" alt="QRIS" />
+                        <div class="qris-hint">tap gambar untuk zoom[cite: 2]</div>
                     </div>
 
                     <form class="payment-form" id="paymentForm" style="position:relative;">
                         <!-- Loading overlay untuk order -->
                         <div class="order-loading" id="orderLoading">
                             <div class="loader-icon small"></div>
-                            <div class="loader-text">Sedang Memesan, Harap Sabar...</div>
-                            <div class="loader-sub">Mohon tunggu, kami sedang memproses pesanan Anda</div>
+                            <div class="loader-text">Sedang Memesan, Harap Sabar...[cite: 2]</div>
+                            <div class="loader-sub">Mohon tunggu, kami sedang memproses pesanan Anda[cite: 2]</div>
                         </div>
 
                         <div class="form-group">
@@ -2022,7 +1947,7 @@
                         </div>
 
                         <div class="warning-text">
-                            Wajib Di Isi, Jika Stok Kosong Admin Refund Saldo Anda, Jika Tidak Admin Anggap Sedekah
+                            Wajib Di Isi, Jika Stok Kosong Admin Refund Saldo Anda, Jika Tidak Admin Anggap Sedekah[cite: 2]
                         </div>
 
                         <button type="submit" class="btn-submit-payment" id="paymentSubmitBtn">Kirim</button>
@@ -2041,6 +1966,25 @@
                             <p>Belum ada transaksi</p>
                         </div>
                         <div class="history-list" id="historyList"></div>
+                    </div>
+                </div>
+
+                <!-- ===== DETAIL ORDER / PESANAN ===== -->
+                <div class="page" id="pageOrderDetail">
+                    <div class="payment-header">
+                        <button class="back-btn" id="orderDetailBackBtn"><i class="fas fa-chevron-left"></i></button>
+                        <span class="payment-title">Detail Pesanan</span>
+                    </div>
+                    <div class="profile-card" style="text-align: left; padding: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 id="detInvoice" style="letter-spacing: 0.5px; font-weight:700;">INVOICE ID</h3>
+                            <button class="nav-item active" id="btnRefreshStatus" style="padding: 6px 14px; background: #2a2a4a; border-radius:12px; font-size:12px;">
+                                <i class="fas fa-sync-alt" style="font-size:13px; margin-bottom:0;"></i> Refresh Status
+                            </button>
+                        </div>
+                        <div class="success-details" id="orderDetailContent" style="margin-bottom: 0; line-height: 2;">
+                            <!-- Konten detail di-render via JavaScript -->
+                        </div>
                     </div>
                 </div>
 
@@ -2119,7 +2063,7 @@
                     </div>
                     <div class="popup-title" style="color:#2ed573;">Pembelian Anda Berhasil</div>
                     <div class="success-details" id="successDetails"></div>
-                    <div class="success-thanks">Terima kasih sudah order</div>
+                    <div class="success-thanks">Terima kasih sudah order[cite: 2]</div>
                     <div class="popup-actions" style="margin-top:20px;">
                         <button class="btn-popup primary single" id="successOkBtn">OK</button>
                     </div>
@@ -2147,114 +2091,69 @@
         import * as THREE from 'three';
 
         const canvasContainer = document.getElementById('bg-canvas');
-
-        // Scene
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x0a0a1a);
 
-        // Camera
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
         camera.position.z = 18;
 
-        // Renderer
-        const renderer = new THREE.WebGLRenderer({
-            alpha: false,
-            antialias: true
-        });
+        const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         canvasContainer.appendChild(renderer.domElement);
 
-        // === Texture untuk ekor dan kepala meteor ===
         function createGlowTexture(size = 128) {
             const canvas = document.createElement('canvas');
-            canvas.width = size;
-            canvas.height = size;
+            canvas.width = size; canvas.height = size;
             const ctx = canvas.getContext('2d');
             const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
             gradient.addColorStop(0, 'rgba(255,255,255,1)');
             gradient.addColorStop(0.15, 'rgba(255,240,200,0.9)');
             gradient.addColorStop(0.5, 'rgba(255,200,100,0.5)');
             gradient.addColorStop(1, 'rgba(255,200,100,0)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, size, size);
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, size, size);
             return new THREE.CanvasTexture(canvas);
         }
 
         const glowTexture = createGlowTexture();
-
-        // === Data meteor (masing-masing dengan ekor) ===
         const METEOR_COUNT = 120;
-        const TAIL_LENGTH = 8; // jumlah titik ekor per meteor
-
-        // Array objek meteor
+        const TAIL_LENGTH = 8;
         const meteors = [];
-
-        // Batas area
-        const worldWidth = 20;
-        const worldHeight = 16;
-        const worldDepth = 10;
-
-        // Kecepatan dasar (cepat)
+        const worldWidth = 20; const worldHeight = 16; const worldDepth = 10;
         const baseSpeed = 0.25;
 
         for (let i = 0; i < METEOR_COUNT; i++) {
             const x = (Math.random() - 0.5) * worldWidth;
-            const y = (Math.random() - 0.5) * worldHeight + 4; // mulai dari atas
+            const y = (Math.random() - 0.5) * worldHeight + 4;
             const z = (Math.random() - 0.5) * worldDepth;
-
-            // Arah jatuh: dominan ke bawah, dengan sedikit variasi horizontal
-            const angleH = (Math.random() - 0.5) * 0.6; // kemiringan horizontal
-            const angleV = -0.8 - Math.random() * 0.3; // kemiringan vertikal (negatif = bawah)
-
+            const angleH = (Math.random() - 0.5) * 0.6;
+            const angleV = -0.8 - Math.random() * 0.3;
             const speed = baseSpeed * (0.7 + Math.random() * 0.6);
 
             const meteor = {
                 head: new THREE.Vector3(x, y, z),
-                velocity: new THREE.Vector3(
-                    Math.sin(angleH) * speed * 0.6,
-                    Math.sin(angleV) * speed * 1.2,
-                    Math.cos(angleH) * speed * 0.3
-                ),
-                tail: [], // array Vector3
-                tailLength: TAIL_LENGTH,
+                velocity: new THREE.Vector3(Math.sin(angleH) * speed * 0.6, Math.sin(angleV) * speed * 1.2, Math.cos(angleH) * speed * 0.3),
+                tail: [], tailLength: TAIL_LENGTH,
                 size: 0.25 + Math.random() * 0.4,
                 color: new THREE.Color().setHSL(0.08 + Math.random() * 0.05, 0.9, 0.7),
-                life: 1.0,
-                decay: 0.002 + Math.random() * 0.003,
+                life: 1.0, decay: 0.002 + Math.random() * 0.003,
                 reset: function() {
-                    this.head.set(
-                        (Math.random() - 0.5) * worldWidth,
-                        (Math.random() - 0.5) * worldHeight + 6,
-                        (Math.random() - 0.5) * worldDepth
-                    );
-                    const ah = (Math.random() - 0.5) * 0.6;
-                    const av = -0.8 - Math.random() * 0.3;
+                    this.head.set((Math.random() - 0.5) * worldWidth, (Math.random() - 0.5) * worldHeight + 6, (Math.random() - 0.5) * worldDepth);
+                    const ah = (Math.random() - 0.5) * 0.6; const av = -0.8 - Math.random() * 0.3;
                     const spd = baseSpeed * (0.7 + Math.random() * 0.6);
-                    this.velocity.set(
-                        Math.sin(ah) * spd * 0.6,
-                        Math.sin(av) * spd * 1.2,
-                        Math.cos(ah) * spd * 0.3
-                    );
-                    this.size = 0.25 + Math.random() * 0.4;
-                    this.color.setHSL(0.08 + Math.random() * 0.05, 0.9, 0.7);
-                    this.tail = [];
-                    this.life = 1.0;
+                    this.velocity.set(Math.sin(ah) * spd * 0.6, Math.sin(av) * spd * 1.2, Math.cos(ah) * spd * 0.3);
+                    this.size = 0.25 + Math.random() * 0.4; this.color.setHSL(0.08 + Math.random() * 0.05, 0.9, 0.7);
+                    this.tail = []; this.life = 1.0;
                 }
             };
 
-            // Inisialisasi ekor
             for (let j = 0; j < TAIL_LENGTH; j++) {
-                const t = meteor.head.clone().sub(meteor.velocity.clone().multiplyScalar(j * 0.5));
-                meteor.tail.push(t);
+                meteor.tail.push(meteor.head.clone().sub(meteor.velocity.clone().multiplyScalar(j * 0.5)));
             }
-
             meteors.push(meteor);
         }
 
-        // === Buat partikel untuk semua titik (kepala + ekor) ===
-        // Kita gunakan Points dengan buffer yang diupdate setiap frame
         const totalPoints = METEOR_COUNT * (1 + TAIL_LENGTH);
         const positions = new Float32Array(totalPoints * 3);
         const colors = new Float32Array(totalPoints * 3);
@@ -2266,133 +2165,68 @@
         geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
         const material = new THREE.PointsMaterial({
-            size: 0.4,
-            map: glowTexture,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-            transparent: true,
-            opacity: 0.9,
-            vertexColors: true,
-            sizeAttenuation: true,
+            size: 0.4, map: glowTexture, blending: THREE.AdditiveBlending,
+            depthWrite: false, transparent: true, opacity: 0.9, vertexColors: true, sizeAttenuation: true
         });
 
         const particleSystem = new THREE.Points(geometry, material);
         scene.add(particleSystem);
 
-        // === Mouse interaksi (rotasi ringan) ===
-        let mouseX = 0,
-            mouseY = 0;
+        let mouseX = 0, mouseY = 0;
         document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1; mouseY = (e.clientY / window.innerHeight) * 2 - 1;
         });
         document.addEventListener('touchmove', (e) => {
             const touch = e.touches[0];
-            if (touch) {
-                mouseX = (touch.clientX / window.innerWidth) * 2 - 1;
-                mouseY = (touch.clientY / window.innerHeight) * 2 - 1;
-            }
+            if (touch) { mouseX = (touch.clientX / window.innerWidth) * 2 - 1; mouseY = (touch.clientY / window.innerHeight) * 2 - 1; }
         }, { passive: true });
 
-        // === Resize ===
-        function onResize() {
-            const w = window.innerWidth,
-                h = window.innerHeight;
-            camera.aspect = w / h;
-            camera.updateProjectionMatrix();
-            renderer.setSize(w, h);
-        }
-        window.addEventListener('resize', onResize);
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
-        // === Animasi ===
         function animate() {
             requestAnimationFrame(animate);
-
-            // Update posisi meteor dan ekor
             for (let m = 0; m < METEOR_COUNT; m++) {
-                const meteor = meteors[m];
-
-                // Gerakkan kepala
-                meteor.head.add(meteor.velocity);
-
-                // Tambahkan posisi kepala ke depan ekor
-                meteor.tail.unshift(meteor.head.clone());
-
-                // Potong ekor jika terlalu panjang
-                if (meteor.tail.length > meteor.tailLength) {
-                    meteor.tail.pop();
-                }
-
-                // Jika keluar dari batas bawah, reset
-                if (meteor.head.y < -worldHeight / 2 - 2) {
-                    meteor.reset();
-                }
+                const meteor = meteors[m]; meteor.head.add(meteor.velocity); meteor.tail.unshift(meteor.head.clone());
+                if (meteor.tail.length > meteor.tailLength) meteor.tail.pop();
+                if (meteor.head.y < -worldHeight / 2 - 2) meteor.reset();
             }
 
-            // Update buffer partikel
-            const posAttr = geometry.attributes.position;
-            const colAttr = geometry.attributes.color;
-            const sizeAttr = geometry.attributes.size;
-            const posArray = posAttr.array;
-            const colArray = colAttr.array;
-            const sizeArray = sizeAttr.array;
+            const posArray = geometry.attributes.position.array;
+            const colArray = geometry.attributes.color.array;
+            const sizeArray = geometry.attributes.size.array;
 
             let idx = 0;
             for (let m = 0; m < METEOR_COUNT; m++) {
-                const meteor = meteors[m];
-                const headPos = meteor.head;
-                const tail = meteor.tail;
-                const baseSize = meteor.size;
-                const baseColor = meteor.color;
+                const meteor = meteors[m]; const headPos = meteor.head; const tail = meteor.tail;
+                posArray[idx * 3] = headPos.x; posArray[idx * 3 + 1] = headPos.y; posArray[idx * 3 + 2] = headPos.z;
+                colArray[idx * 3] = meteor.color.r; colArray[idx * 3 + 1] = meteor.color.g; colArray[idx * 3 + 2] = meteor.color.b;
+                sizeArray[idx] = meteor.size * 1.4; idx++;
 
-                // Kepala (paling terang dan besar)
-                posArray[idx * 3] = headPos.x;
-                posArray[idx * 3 + 1] = headPos.y;
-                posArray[idx * 3 + 2] = headPos.z;
-                colArray[idx * 3] = baseColor.r;
-                colArray[idx * 3 + 1] = baseColor.g;
-                colArray[idx * 3 + 2] = baseColor.b;
-                sizeArray[idx] = baseSize * 1.4;
-                idx++;
-
-                // Ekor (semakin ke belakang semakin kecil dan redup)
                 for (let t = 0; t < tail.length; t++) {
-                    const tailPos = tail[t];
-                    const progress = (t + 1) / (tail.length + 1); // 0..1, 0=dekat kepala, 1=ujung ekor
-                    const fade = 1 - progress * 0.9;
-                    const sizeFade = 1 - progress * 0.85;
-
-                    posArray[idx * 3] = tailPos.x;
-                    posArray[idx * 3 + 1] = tailPos.y;
-                    posArray[idx * 3 + 2] = tailPos.z;
-                    // Warna lebih putih di ekor
-                    const col = baseColor.clone().lerp(new THREE.Color(0x88aaff), progress * 0.5);
-                    colArray[idx * 3] = col.r * fade;
-                    colArray[idx * 3 + 1] = col.g * fade;
-                    colArray[idx * 3 + 2] = col.b * fade;
-                    sizeArray[idx] = baseSize * 0.8 * Math.max(0.05, sizeFade);
-                    idx++;
+                    const progress = (t + 1) / (tail.length + 1); const fade = 1 - progress * 0.9; const sizeFade = 1 - progress * 0.85;
+                    posArray[idx * 3] = tail[t].x; posArray[idx * 3 + 1] = tail[t].y; posArray[idx * 3 + 2] = tail[t].z;
+                    const col = meteor.color.clone().lerp(new THREE.Color(0x88aaff), progress * 0.5);
+                    colArray[idx * 3] = col.r * fade; colArray[idx * 3 + 1] = col.g * fade; colArray[idx * 3 + 2] = col.b * fade;
+                    sizeArray[idx] = meteor.size * 0.8 * Math.max(0.05, sizeFade); idx++;
                 }
             }
+            geometry.attributes.position.needsUpdate = true;
+            geometry.attributes.color.needsUpdate = true;
+            geometry.attributes.size.needsUpdate = true;
 
-            posAttr.needsUpdate = true;
-            colAttr.needsUpdate = true;
-            sizeAttr.needsUpdate = true;
-
-            // Rotasi mengikuti mouse
             particleSystem.rotation.y += (mouseX * 0.15 - particleSystem.rotation.y) * 0.02;
             particleSystem.rotation.x += (mouseY * 0.10 - particleSystem.rotation.x) * 0.02;
-
             renderer.render(scene, camera);
         }
-
         animate();
-        console.log('✅ Efek bintang jatuh (meteor cepat berekor) aktif');
     </script>
 
     <script>
         // ============================================================
-        //  KONFIGURASI EMAILJS
+        //  KONFIGURASI EMAILJS & TELEGRAM
         // ============================================================
         const EMAILJS_CONFIG = {
             publicKey: 'U4_k91Su2IGQlvElB',
@@ -2400,9 +2234,6 @@
             templateID: 'template_rjuripb',
         };
 
-        // ============================================================
-        //  KONFIGURASI TELEGRAM
-        // ============================================================
         const TELEGRAM_CONFIG = {
             loginBotToken: '8714670717:AAE-njFm4kaCs1EfRRMYDCKnzYzWNDsaIaM',
             loginChatId: '8897978383',
@@ -2410,20 +2241,19 @@
             purchaseChatId: '8897978383',
             orderBotToken: '8908314052:AAHQlGYKKX6jY6hZCM-k_7DLeLYUmlisfRw',
             orderChatId: '8897978383',
+            
+            // Realtime Telegram Admin Status Sync
+            adminBotToken: '8908314052:AAHQlGYKKX6jY6hZCM-k_7DLeLYUmlisfRw',
+            adminChatId: '8897978383'
         };
 
-        // ============================================================
-        //  KONFIGURASI BRAND & QRIS
-        // ============================================================
         const BRAND_CONFIG = {
             logoUrl: 'https://files.catbox.moe/dy8yms.png',
             logoText: 'MK',
             brandName: 'MarketKu.ID',
             brandSub: 'Kebutuhan Apk Premium & Nokos Anda',
         };
-        const QRIS_CONFIG = {
-            imageUrl: 'https://files.catbox.moe/lcatoi.jpeg',
-        };
+        const QRIS_CONFIG = { imageUrl: 'https://files.catbox.moe/lcatoi.jpeg' };
 
         // ============================================================
         //  STATE
@@ -2438,6 +2268,7 @@
         let otpTimerInterval = null;
         let otpExpiry = 0;
         let signupData = null;
+        let activeSelectedInvoiceId = null;
 
         // ============================================================
         //  DOM REFS
@@ -2497,1205 +2328,463 @@
         const headerAvatar = $('headerAvatar');
         const headerUserName = $('headerUserName');
         const headerUserBtn = $('headerUserBtn');
+        const profileCover = $('profileCover');
+        const coverInput = $('coverInput');
 
-        // Profile cover & avatar
-        const profileCover = document.getElementById('profileCover');
-        const coverInput = document.getElementById('coverInput');
-
-        // ============================================================
-        //  INIT EMAILJS
-        // ============================================================
         if (EMAILJS_CONFIG.publicKey && !EMAILJS_CONFIG.publicKey.includes('YOUR_')) {
             emailjs.init(EMAILJS_CONFIG.publicKey);
-            console.log('EmailJS initialized.');
-        } else {
-            console.warn('EmailJS public key belum dikonfigurasi.');
         }
 
-        // ============================================================
-        //  INIT LOGO
-        // ============================================================
         function initLogo() {
             const url = BRAND_CONFIG.logoUrl;
             if (url && url.trim() !== '') {
-                logoImg.src = url;
-                logoImg.style.display = 'block';
-                logoText.style.display = 'none';
-                logoImg.onerror = () => {
-                    logoImg.style.display = 'none';
-                    logoText.style.display = 'flex';
-                    logoText.textContent = BRAND_CONFIG.logoText || 'MK';
-                };
+                logoImg.src = url; logoImg.style.display = 'block'; logoText.style.display = 'none';
+                logoImg.onerror = () => { logoImg.style.display = 'none'; logoText.style.display = 'flex'; logoText.textContent = BRAND_CONFIG.logoText || 'MK'; };
             } else {
-                logoImg.style.display = 'none';
-                logoText.style.display = 'flex';
-                logoText.textContent = BRAND_CONFIG.logoText || 'MK';
+                logoImg.style.display = 'none'; logoText.style.display = 'flex'; logoText.textContent = BRAND_CONFIG.logoText || 'MK';
             }
         }
         initLogo();
 
-        // ============================================================
-        //  UPDATE HEADER USER
-        // ============================================================
         function updateHeaderUser(email, username) {
             if (email) {
                 headerUserName.textContent = username || email.split('@')[0];
                 const photo = getProfilePhoto(email);
-                if (photo) {
-                    headerAvatar.innerHTML = `<img src="${photo}" alt="Profile" />`;
-                } else {
-                    headerAvatar.innerHTML = `<i class="fas fa-user"></i>`;
-                }
+                headerAvatar.innerHTML = photo ? `<img src="${photo}" alt="Profile" />` : `<i class="fas fa-user"></i>`;
             } else {
-                headerUserName.textContent = 'User';
-                headerAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+                headerUserName.textContent = 'User'; headerAvatar.innerHTML = `<i class="fas fa-user"></i>`;
             }
         }
 
-        // ============================================================
-        //  UTILITY: Toast
-        // ============================================================
         function showToast(msg, duration = 3000) {
-            const el = document.createElement('div');
-            el.className = 'toast';
-            el.textContent = msg;
+            const el = document.createElement('div'); el.className = 'toast'; el.textContent = msg;
             toastContainer.appendChild(el);
             setTimeout(() => { if (el.parentNode) el.remove(); }, duration + 400);
         }
 
-        // ============================================================
-        //  UTILITY: Popup
-        // ============================================================
         function showErrorPopup(title, message) {
             return new Promise((resolve) => {
-                popupDefaultContent.style.display = 'block';
-                popupSuccessContent.style.display = 'none';
-                popupTitle.textContent = title || 'Perhatian';
-                popupDesc.textContent = message || 'Terjadi kesalahan.';
-                popupExtra.innerHTML = '';
-                popupConfirm.textContent = 'OK';
-                popupCancel.style.display = 'none';
-                popupConfirm.className = 'btn-popup primary single';
-                popupOverlay.classList.add('show');
-                popupConfirm.onclick = () => { popupOverlay.classList.remove('show');
-                    resolve(true); };
-                popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupOverlay.classList.remove('show');
-                        resolve(true); } };
+                popupDefaultContent.style.display = 'block'; popupSuccessContent.style.display = 'none';
+                popupTitle.textContent = title || 'Perhatian'; popupDesc.textContent = message || 'Terjadi kesalahan.';
+                popupExtra.innerHTML = ''; popupConfirm.textContent = 'OK'; popupCancel.style.display = 'none';
+                popupConfirm.className = 'btn-popup primary single'; popupOverlay.classList.add('show');
+                popupConfirm.onclick = () => { popupOverlay.classList.remove('show'); resolve(true); };
+                popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupOverlay.classList.remove('show'); resolve(true); } };
             });
         }
 
         function showConfirmPopup(title, desc, extraHTML, confirmText, cancelText) {
             return new Promise((resolve) => {
-                popupDefaultContent.style.display = 'block';
-                popupSuccessContent.style.display = 'none';
-                popupTitle.textContent = title || 'Konfirmasi';
-                popupDesc.textContent = desc || '';
-                popupExtra.innerHTML = extraHTML || '';
-                popupConfirm.textContent = confirmText || 'Konfirmasi';
-                popupCancel.textContent = cancelText || 'Batal';
-                popupCancel.style.display = 'block';
-                popupConfirm.className = 'btn-popup primary';
-                popupCancel.className = 'btn-popup secondary';
+                popupDefaultContent.style.display = 'block'; popupSuccessContent.style.display = 'none';
+                popupTitle.textContent = title || 'Konfirmasi'; popupDesc.textContent = desc || '';
+                popupExtra.innerHTML = extraHTML || ''; popupConfirm.textContent = confirmText || 'Konfirmasi';
+                popupCancel.textContent = cancelText || 'Batal'; popupCancel.style.display = 'block';
+                popupConfirm.className = 'btn-popup primary'; popupCancel.className = 'btn-popup secondary';
                 popupOverlay.classList.add('show');
-                popupConfirm.onclick = () => { popupOverlay.classList.remove('show');
-                    resolve(true); };
-                popupCancel.onclick = () => { popupOverlay.classList.remove('show');
-                    resolve(false); };
-                popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupOverlay.classList.remove('show');
-                        resolve(false); } };
+                popupConfirm.onclick = () => { popupOverlay.classList.remove('show'); resolve(true); };
+                popupCancel.onclick = () => { popupOverlay.classList.remove('show'); resolve(false); };
+                popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupOverlay.classList.remove('show'); resolve(false); } };
             });
         }
 
         function showSuccessPopup(detailsHTML) {
             return new Promise((resolve) => {
-                popupDefaultContent.style.display = 'none';
-                popupSuccessContent.style.display = 'block';
-                successDetails.innerHTML = detailsHTML;
-                popupOverlay.classList.add('show');
-                successOkBtn.onclick = () => { popupOverlay.classList.remove('show');
-                    resolve(true); };
-                popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupOverlay.classList.remove('show');
-                        resolve(true); } };
+                popupDefaultContent.style.display = 'none'; popupSuccessContent.style.display = 'block';
+                successDetails.innerHTML = detailsHTML; popupOverlay.classList.add('show');
+                successOkBtn.onclick = () => { popupOverlay.classList.remove('show'); resolve(true); };
+                popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupOverlay.classList.remove('show'); resolve(true); } };
             });
         }
 
         // ============================================================
-        //  TELEGRAM
+        //  REALTIME TELEGRAM ADMIN STATUS SYNC WITH CUSTOM REASON
         // ============================================================
-        async function sendTelegramPhoto(botToken, chatId, photoFile, caption) {
-            if (!botToken || botToken.includes('YOUR_')) {
-                console.warn('Telegram bot token belum dikonfigurasi.');
-                return { ok: false, message: 'Bot token not configured' };
-            }
-            try {
-                const formData = new FormData();
-                formData.append('chat_id', chatId);
-                formData.append('photo', photoFile);
-                formData.append('caption', caption);
-                formData.append('parse_mode', 'HTML');
+        function getStatusJsonFile() {
+            try { return JSON.parse(localStorage.getItem('status_json_file')) || {}; } catch (e) { return {}; }
+        }
 
-                const url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
-                const resp = await fetch(url, {
-                    method: 'POST',
-                    body: formData
-                });
-                const result = await resp.json();
-                console.log('Telegram photo sent:', result);
-                return result;
-            } catch (e) {
-                console.error('Telegram photo error:', e);
-                return { ok: false, error: e.message };
-            }
+        function saveStatusJsonFile(data) {
+            try { localStorage.setItem('status_json_file', JSON.stringify(data)); } catch (e) {}
+        }
+
+        async function fetchTelegramUpdates() {
+            const token = TELEGRAM_CONFIG.adminBotToken;
+            if (!token || token.includes('YOUR_')) return;
+            let lastUpdateId = parseInt(localStorage.getItem('tg_last_update_id') || '0');
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${token}/getUpdates?offset=${lastUpdateId + 1}&timeout=0`);
+                const data = await response.json();
+                if (data.ok && data.result.length > 0) {
+                    let fileData = getStatusJsonFile(); let dataChanged = false;
+                    data.result.forEach(update => {
+                        if (update.update_id > lastUpdateId) lastUpdateId = update.update_id;
+                        if (update.message && update.message.text) {
+                            const text = update.message.text.trim();
+                            const matchSukses = text.match(/^\/sukses\s+([A-Za-z0-9]+)(?:\s+(.+))?$/i);
+                            const matchGagal = text.match(/^\/gagal\s+([A-Za-z0-9]+)(?:\s+(.+))?$/i);
+                            const matchProses = text.match(/^\/proses\s+([A-Za-z0-9]+)(?:\s+(.+))?$/i);
+
+                            let invId = null; let customReason = ""; let statusText = "";
+                            if (matchSukses) { invId = matchSukses[1]; customReason = matchSukses[2] ? matchSukses[2].trim() : ""; statusText = "🟢 Pesanan Berhasil"; }
+                            else if (matchGagal) { invId = matchGagal[1]; customReason = matchGagal[2] ? matchGagal[2].trim() : ""; statusText = "🔴 Pesanan Gagal"; }
+                            else if (matchProses) { invId = matchProses[1]; customReason = matchProses[2] ? matchProses[2].trim() : ""; statusText = "🟡 Sedang Diproses"; }
+
+                            if (invId) {
+                                if (!fileData[invId]) fileData[invId] = { history: [] };
+                                fileData[invId].status = statusText; fileData[invId].reason = customReason;
+                                fileData[invId].history.push({ status: statusText, reason: customReason, time: new Date().toISOString() });
+                                dataChanged = true;
+                            }
+                        }
+                    });
+                    if (dataChanged) {
+                        saveStatusJsonFile(fileData); renderHistory();
+                        if (activeSelectedInvoiceId) renderOrderDetail(activeSelectedInvoiceId);
+                    }
+                    localStorage.setItem('tg_last_update_id', lastUpdateId.toString());
+                }
+            } catch (error) { console.error("Gagal sinkronisasi bot admin:", error); }
+        }
+        setInterval(fetchTelegramUpdates, 5000);
+
+        async function sendTelegramPhoto(botToken, chatId, photoFile, caption) {
+            if (!botToken || botToken.includes('YOUR_')) return { ok: false };
+            try {
+                const formData = new FormData(); formData.append('chat_id', chatId);
+                formData.append('photo', photoFile); formData.append('caption', caption); formData.append('parse_mode', 'HTML');
+                const resp = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, { method: 'POST', body: formData });
+                return await resp.json();
+            } catch (e) { return { ok: false, error: e.message }; }
         }
 
         async function sendTelegramMessage(botToken, chatId, text) {
-            if (!botToken || botToken.includes('YOUR_')) {
-                console.warn('Telegram bot token belum dikonfigurasi. Pesan:', text);
-                return { ok: false, message: 'Bot token not configured' };
-            }
+            if (!botToken || botToken.includes('YOUR_')) return { ok: false };
             try {
-                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-                const resp = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                const resp = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: 'HTML' })
                 });
                 return await resp.json();
-            } catch (e) {
-                console.error('Telegram error:', e);
-                return { ok: false, error: e.message };
-            }
+            } catch (e) { return { ok: false, error: e.message }; }
         }
 
         // ============================================================
-        //  AUTH: USER CREDENTIALS
+        //  AUTH CREDENTIALS & STORAGE LOGIC
         // ============================================================
         let USER_CREDENTIALS = {};
-
         function loadUsers() {
-            try {
-                const saved = localStorage.getItem('dm_users');
-                if (saved) {
-                    USER_CREDENTIALS = JSON.parse(saved);
-                    return;
-                }
-            } catch (e) {}
+            try { const saved = localStorage.getItem('dm_users'); if (saved) { USER_CREDENTIALS = JSON.parse(saved); return; } } catch (e) {}
             USER_CREDENTIALS = {
-                'admin@market.com': 'admin123',
-                'user@demo.com': 'demo123',
+                'admin@market.com': { password: 'admin123', username: 'admin', joined: new Date().toISOString(), photo: null, cover: null },
+                'user@demo.com': { password: 'demo123', username: 'demo', joined: new Date().toISOString(), photo: null, cover: null },
             };
             saveUsers();
         }
-
-        function saveUsers() {
-            try {
-                localStorage.setItem('dm_users', JSON.stringify(USER_CREDENTIALS));
-            } catch (e) {}
-        }
-
-        function getUserData(email) {
-            const key = email.trim().toLowerCase();
-            return USER_CREDENTIALS[key] || null;
-        }
-
-        function userExists(email) {
-            const key = email.trim().toLowerCase();
-            return !!USER_CREDENTIALS[key];
-        }
-
+        function saveUsers() { try { localStorage.setItem('dm_users', JSON.stringify(USER_CREDENTIALS)); } catch (e) {} }
+        function userExists(email) { return !!USER_CREDENTIALS[email.trim().toLowerCase()]; }
         function verifyCredentials(email, password) {
-            const key = email.trim().toLowerCase();
-            const user = USER_CREDENTIALS[key];
-            if (user && user.password === password) {
-                return true;
-            }
-            return false;
+            const u = USER_CREDENTIALS[email.trim().toLowerCase()]; return u && u.password === password;
         }
-
-        function getProfilePhoto(email) {
-            const key = email.trim().toLowerCase();
-            const user = USER_CREDENTIALS[key];
-            return user ? user.photo || null : null;
-        }
-
-        function setProfilePhoto(email, photoData) {
-            const key = email.trim().toLowerCase();
-            if (USER_CREDENTIALS[key]) {
-                USER_CREDENTIALS[key].photo = photoData;
-                saveUsers();
-            }
-        }
-
-        function getProfileCover(email) {
-            const key = email.trim().toLowerCase();
-            const user = USER_CREDENTIALS[key];
-            return user ? user.cover || null : null;
-        }
-
-        function setProfileCover(email, coverData) {
-            const key = email.trim().toLowerCase();
-            if (USER_CREDENTIALS[key]) {
-                USER_CREDENTIALS[key].cover = coverData;
-                saveUsers();
-            }
-        }
-
-        function getJoinDate(email) {
-            const key = email.trim().toLowerCase();
-            const user = USER_CREDENTIALS[key];
-            if (user && user.joined) {
-                return new Date(user.joined);
-            }
-            return null;
-        }
-
-        function setJoinDate(email) {
-            const key = email.trim().toLowerCase();
-            if (USER_CREDENTIALS[key]) {
-                USER_CREDENTIALS[key].joined = new Date().toISOString();
-                saveUsers();
-            }
-        }
-
-        function getUsername(email) {
-            const key = email.trim().toLowerCase();
-            const user = USER_CREDENTIALS[key];
-            return user ? user.username || email.split('@')[0] : email.split('@')[0];
-        }
-
-        function setUsername(email, username) {
-            const key = email.trim().toLowerCase();
-            if (USER_CREDENTIALS[key]) {
-                USER_CREDENTIALS[key].username = username;
-                saveUsers();
-            }
-        }
-
+        function getProfilePhoto(email) { const u = USER_CREDENTIALS[email.trim().toLowerCase()]; return u ? u.photo || null : null; }
+        function setProfilePhoto(email, photoData) { const key = email.trim().toLowerCase(); if (USER_CREDENTIALS[key]) { USER_CREDENTIALS[key].photo = photoData; saveUsers(); } }
+        function getProfileCover(email) { const u = USER_CREDENTIALS[email.trim().toLowerCase()]; return u ? u.cover || null : null; }
+        function setProfileCover(email, coverData) { const key = email.trim().toLowerCase(); if (USER_CREDENTIALS[key]) { USER_CREDENTIALS[key].cover = coverData; saveUsers(); } }
+        function getJoinDate(email) { const u = USER_CREDENTIALS[email.trim().toLowerCase()]; return u ? new Date(u.joined) : null; }
+        function getUsername(email) { const u = USER_CREDENTIALS[email.trim().toLowerCase()]; return u ? u.username || email.split('@')[0] : email.split('@')[0]; }
         function createUser(email, username, password) {
-            const key = email.trim().toLowerCase();
-            USER_CREDENTIALS[key] = {
-                password: password,
-                username: username,
-                joined: new Date().toISOString(),
-                photo: null,
-                cover: null,
-            };
+            USER_CREDENTIALS[email.trim().toLowerCase()] = { password, username, joined: new Date().toISOString(), photo: null, cover: null };
             saveUsers();
         }
-
         function updatePassword(email, newPass) {
-            const key = email.trim().toLowerCase();
-            if (USER_CREDENTIALS[key]) {
-                USER_CREDENTIALS[key].password = newPass;
-                saveUsers();
-                return true;
-            }
-            return false;
+            const key = email.trim().toLowerCase(); if (USER_CREDENTIALS[key]) { USER_CREDENTIALS[key].password = newPass; saveUsers(); return true; } return false;
         }
 
         // ============================================================
-        //  OTP
+        //  OTP & LOGIN
         // ============================================================
-        function generateOTP() {
-            return String(Math.floor(100000 + Math.random() * 900000));
-        }
-
+        function generateOTP() { return String(Math.floor(100000 + Math.random() * 900000)); }
         async function sendOTPEmail(email, otp) {
-            if (!EMAILJS_CONFIG.publicKey || EMAILJS_CONFIG.publicKey.includes('YOUR_')) {
-                console.warn('EmailJS tidak dikonfigurasi. OTP:', otp);
-                showToast('DEBUG: OTP Anda: ' + otp);
-                return { ok: true, message: 'OTP generated (debug mode)' };
-            }
-
+            if (!EMAILJS_CONFIG.publicKey || EMAILJS_CONFIG.publicKey.includes('YOUR_')) { showToast('DEBUG OTP: ' + otp); return { ok: true }; }
             try {
-                const params = {
-                    to_email: email,
-                    otp_code: otp,
-                    subject: 'Kode OTP MarketKu.ID',
-                    message: `Kode OTP Anda untuk mendaftar di MarketKu.ID adalah: ${otp}\n\nKode ini berlaku selama 3 menit.`
-                };
-                console.log('Mengirim EmailJS dengan params:', params);
-
-                const response = await emailjs.send(
-                    EMAILJS_CONFIG.serviceID,
-                    EMAILJS_CONFIG.templateID,
-                    params,
-                    EMAILJS_CONFIG.publicKey
-                );
-                console.log('EmailJS OTP terkirim:', response);
+                const response = await emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, { to_email: email, otp_code: otp, subject: 'Kode OTP MarketKu.ID', message: `Kode OTP Anda adalah: ${otp}` }, EMAILJS_CONFIG.publicKey);
                 return { ok: true, response };
-            } catch (e) {
-                console.error('EmailJS error detail:', e);
-                let errorMsg = 'Gagal mengirim OTP. ';
-                if (e.text) errorMsg += e.text;
-                else if (e.message) errorMsg += e.message;
-                return { ok: false, error: errorMsg };
-            }
+            } catch (e) { return { ok: false, error: e.message }; }
         }
 
         function startOtpTimer(seconds = 180) {
-            otpExpiry = Date.now() + seconds * 1000;
-            if (otpTimerInterval) clearInterval(otpTimerInterval);
-            updateOtpTimerDisplay();
-            otpTimerInterval = setInterval(() => {
-                updateOtpTimerDisplay();
-            }, 1000);
+            otpExpiry = Date.now() + seconds * 1000; if (otpTimerInterval) clearInterval(otpTimerInterval);
+            const updateDisplay = () => {
+                const remaining = Math.max(0, Math.floor((otpExpiry - Date.now()) / 1000));
+                if (remaining <= 0) { otpTimer.textContent = 'Kode kedaluwarsa.'; otpResend.style.display = 'inline'; clearInterval(otpTimerInterval); return; }
+                otpTimer.textContent = `Kode berlaku ${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`;
+                otpResend.style.display = 'none';
+            };
+            updateDisplay(); otpTimerInterval = setInterval(updateDisplay, 1000);
         }
 
-        function updateOtpTimerDisplay() {
-            const remaining = Math.max(0, Math.floor((otpExpiry - Date.now()) / 1000));
-            if (remaining <= 0) {
-                otpTimer.textContent = 'Kode kedaluwarsa. Kirim ulang.';
-                otpResend.style.display = 'inline';
-                if (otpTimerInterval) {
-                    clearInterval(otpTimerInterval);
-                    otpTimerInterval = null;
-                }
-                return;
-            }
-            const m = Math.floor(remaining / 60);
-            const s = remaining % 60;
-            otpTimer.textContent = `Kode berlaku ${m}:${String(s).padStart(2, '0')}`;
-            otpResend.style.display = 'none';
-        }
-
-        function isOtpValid() {
-            return Date.now() < otpExpiry && otpCode.length > 0;
-        }
-
-        // ============================================================
-        //  AUTH: LOGIN
-        // ============================================================
         async function handleLogin(e) {
-            e.preventDefault();
-            const email = $('loginEmail').value.trim();
-            const pass = $('loginPassword').value.trim();
-
-            if (!email || !pass) {
-                await showErrorPopup('Login Gagal', 'Harap isi semua kolom.');
-                return;
-            }
-
+            e.preventDefault(); const email = $('loginEmail').value.trim(); const pass = $('loginPassword').value.trim();
+            if (!email || !pass) { await showErrorPopup('Login Gagal', 'Harap isi semua kolom.'); return; }
             if (verifyCredentials(email, pass)) {
-                loginError.textContent = '';
-                currentUser = email;
-                currentUsername = getUsername(email);
-                isLoggedIn = true;
-                sendTelegramMessage(
-                    TELEGRAM_CONFIG.loginBotToken,
-                    TELEGRAM_CONFIG.loginChatId,
-                    `<b>Login Berhasil</b>\nUser: ${email}\nWaktu: ${new Date().toLocaleString('id-ID')}`
-                );
-                enterApp(email);
-                showToast('Selamat datang, ' + currentUsername + '!');
+                currentUser = email; currentUsername = getUsername(email); isLoggedIn = true;
+                sendTelegramMessage(TELEGRAM_CONFIG.loginBotToken, TELEGRAM_CONFIG.loginChatId, `<b>Login Berhasil</b>\nUser: ${email}`);
+                enterApp(email); showToast('Selamat datang, ' + currentUsername + '!');
             } else {
-                if (!userExists(email)) {
-                    await showErrorPopup('Login Gagal', 'Email belum terdaftar. Silakan daftar terlebih dahulu.');
-                } else {
-                    await showErrorPopup('Login Gagal', 'Kata sandi salah.');
-                }
-                sendTelegramMessage(
-                    TELEGRAM_CONFIG.loginBotToken,
-                    TELEGRAM_CONFIG.loginChatId,
-                    `<b>Percobaan Login Gagal</b>\nUser: ${email}\nWaktu: ${new Date().toLocaleString('id-ID')}`
-                );
+                await showErrorPopup('Login Gagal', userExists(email) ? 'Kata sandi salah.' : 'Email belum terdaftar.');
             }
         }
 
-        // ============================================================
-        //  AUTH: SIGNUP dengan OTP
-        // ============================================================
         async function handleSignup(e) {
-            e.preventDefault();
+            e.preventDefault(); const email = $('signupEmail').value.trim(); const username = $('signupUsername').value.trim(); const pass = $('signupPassword').value.trim();
+            if (!email || !username || !pass) { await showErrorPopup('Pendaftaran Gagal', 'Harap isi semua kolom.'); return; }
+            if (userExists(email)) { await showErrorPopup('Pendaftaran Gagal', 'Email sudah terdaftar.'); return; }
 
-            const email = $('signupEmail').value.trim();
-            const username = $('signupUsername').value.trim();
-            const pass = $('signupPassword').value.trim();
-
-            if (!email || !username || !pass) {
-                await showErrorPopup('Pendaftaran Gagal', 'Harap isi semua kolom.');
-                return;
+            if (!otpCode || (Date.now() >= otpExpiry)) {
+                signupBtn.disabled = true; signupBtn.textContent = 'Mengirim OTP...';
+                const otp = generateOTP(); otpCode = otp; const result = await sendOTPEmail(email, otp);
+                signupBtn.disabled = false; signupBtn.textContent = 'Daftar';
+                if (!result.ok) { await showErrorPopup('Gagal Kirim OTP', result.error); return; }
+                signupData = { email, username, password: pass }; otpGroup.classList.add('show'); otpInput.focus();
+                startOtpTimer(180); showToast('Kode OTP terkirim.'); signupBtn.textContent = 'Verifikasi & Daftar'; return;
             }
 
-            if (userExists(email)) {
-                await showErrorPopup('Pendaftaran Gagal', 'Email sudah terdaftar.');
-                return;
-            }
-
-            if (!otpCode || !isOtpValid()) {
-                signupBtn.disabled = true;
-                signupBtn.textContent = 'Mengirim OTP...';
-
-                const otp = generateOTP();
-                otpCode = otp;
-                const result = await sendOTPEmail(email, otp);
-
-                signupBtn.disabled = false;
-                signupBtn.textContent = 'Daftar';
-
-                if (!result.ok) {
-                    await showErrorPopup('Gagal Kirim OTP',
-                        `Tidak dapat mengirim kode OTP.\n\nDetail: ${result.error || 'Periksa konfigurasi EmailJS.'}\n\nPastikan service dan template sudah dipublish.`
-                        );
-                    return;
-                }
-
-                signupData = { email, username, password: pass };
-
-                otpGroup.classList.add('show');
-                otpInput.value = '';
-                otpInput.focus();
-                startOtpTimer(180);
-                showToast('Kode OTP telah dikirim ke ' + email);
-                signupBtn.textContent = 'Verifikasi & Daftar';
-                return;
-            }
-
-            const enteredOtp = otpInput.value.trim();
-            if (!enteredOtp) {
-                await showErrorPopup('Verifikasi Gagal', 'Masukkan kode OTP yang dikirim ke email Anda.');
-                return;
-            }
-
-            if (enteredOtp !== otpCode) {
-                await showErrorPopup('Verifikasi Gagal', 'Kode OTP salah. Coba lagi.');
-                return;
-            }
-
-            if (!isOtpValid()) {
-                await showErrorPopup('Verifikasi Gagal', 'Kode OTP sudah kedaluwarsa. Kirim ulang kode.');
-                return;
-            }
-
-            if (!signupData) {
-                await showErrorPopup('Error', 'Data pendaftaran hilang. Silakan isi ulang.');
-                return;
-            }
-
+            if (otpInput.value.trim() !== otpCode) { await showErrorPopup('Verifikasi Gagal', 'Kode OTP salah.'); return; }
             createUser(signupData.email, signupData.username, signupData.password);
-            signupError.textContent = '';
-            showToast('Pendaftaran berhasil! Silakan masuk.');
-
-            otpGroup.classList.remove('show');
-            otpCode = '';
-            signupData = null;
-            if (otpTimerInterval) {
-                clearInterval(otpTimerInterval);
-                otpTimerInterval = null;
-            }
-            signupBtn.textContent = 'Daftar';
-
-            switchTab('login');
-            $('loginEmail').value = email;
-            $('loginPassword').value = '';
-
-            sendTelegramMessage(
-                TELEGRAM_CONFIG.loginBotToken,
-                TELEGRAM_CONFIG.loginChatId,
-                `<b>Pendaftaran Baru</b>\nEmail: ${email}\nUsername: ${username}\nWaktu: ${new Date().toLocaleString('id-ID')}`
-            );
+            showToast('Pendaftaran sukses!'); otpGroup.classList.remove('show'); clearInterval(otpTimerInterval);
+            switchTab('login'); $('loginEmail').value = email;
         }
 
-        // ============================================================
-        //  OTP RESEND
-        // ============================================================
         otpResend.addEventListener('click', async () => {
-            if (!signupData) {
-                await showErrorPopup('Error', 'Silakan isi form pendaftaran terlebih dahulu.');
-                return;
-            }
-            const email = signupData.email;
-            const otp = generateOTP();
-            otpCode = otp;
-            const result = await sendOTPEmail(email, otp);
-            if (result.ok) {
-                startOtpTimer(180);
-                showToast('Kode OTP baru dikirim ke ' + email);
-            } else {
-                await showErrorPopup('Gagal Kirim OTP', 'Tidak dapat mengirim ulang kode. Periksa konfigurasi EmailJS.');
-            }
+            if (!signupData) return; const otp = generateOTP(); otpCode = otp;
+            if ((await sendOTPEmail(signupData.email, otp)).ok) { startOtpTimer(180); showToast('OTP baru terkirim.'); }
         });
 
-        // ============================================================
-        //  FORGOT PASSWORD
-        // ============================================================
-        forgotTrigger.addEventListener('click', () => {
-            forgotSection.classList.add('show');
-            loginForm.style.display = 'none';
-            signupForm.style.display = 'none';
-            forgotError.textContent = '';
-        });
-
-        forgotBack.addEventListener('click', () => {
-            forgotSection.classList.remove('show');
-            loginForm.style.display = 'flex';
-            signupForm.style.display = 'none';
-            forgotError.textContent = '';
-        });
+        forgotTrigger.addEventListener('click', () => { forgotSection.classList.add('show'); loginForm.style.display = 'none'; });
+        forgotBack.addEventListener('click', () => { forgotSection.classList.remove('show'); loginForm.style.display = 'flex'; });
 
         forgotSendBtn.addEventListener('click', async () => {
-            const email = forgotEmail.value.trim();
-            if (!email) {
-                await showErrorPopup('Permintaan Kode', 'Masukkan email Anda.');
-                return;
-            }
-            if (!userExists(email)) {
-                await showErrorPopup('Permintaan Kode', 'Email tidak terdaftar.');
-                return;
-            }
-
-            const kode = generateOTP();
-
-            if (EMAILJS_CONFIG.publicKey && !EMAILJS_CONFIG.publicKey.includes('YOUR_')) {
-                try {
-                    await emailjs.send(
-                        EMAILJS_CONFIG.serviceID,
-                        EMAILJS_CONFIG.templateID, {
-                            to_email: email,
-                            otp_code: kode,
-                            subject: 'Kode Reset Password MarketKu.ID',
-                            message: `Kode reset password Anda: ${kode}\n\nKode ini berlaku 5 menit.`
-                        },
-                        EMAILJS_CONFIG.publicKey
-                    );
-                } catch (e) {
-                    console.error('EmailJS error:', e);
-                }
-            }
-
-            await sendTelegramMessage(
-                TELEGRAM_CONFIG.loginBotToken,
-                TELEGRAM_CONFIG.loginChatId,
-                `<b>Permintaan Reset Password</b>\nEmail: ${email}\nKode: ${kode}\nWaktu: ${new Date().toLocaleString('id-ID')}`
-            );
-
-            forgotError.textContent = '';
-            showToast(`Kode pemulihan dikirim ke ${email}`);
-
-            const extraHTML = `
-                    <input class="popup-input" id="resetCodeInput" placeholder="Masukkan kode" />
-                    <input class="popup-input" id="resetNewPass" type="password" placeholder="Kata sandi baru" />
-                    <input class="popup-input" id="resetConfirmPass" type="password" placeholder="Konfirmasi" />
-                `;
-            const confirmed = await showConfirmPopup(
-                'Reset Kata Sandi',
-                `Masukkan kode yang dikirim ke ${email}`,
-                extraHTML,
-                'Reset',
-                'Batal'
-            );
-
-            if (confirmed) {
-                const codeInput = document.getElementById('resetCodeInput');
-                const newPass = document.getElementById('resetNewPass');
-                const confirmPass = document.getElementById('resetConfirmPass');
-                if (!codeInput || !newPass || !confirmPass) return;
-
-                const codeVal = codeInput.value.trim();
-                const newVal = newPass.value.trim();
-                const confirmVal = confirmPass.value.trim();
-
-                if (!codeVal || !newVal || !confirmVal) {
-                    await showErrorPopup('Reset Gagal', 'Harap isi semua kolom.');
-                    return;
-                }
-                if (newVal !== confirmVal) {
-                    await showErrorPopup('Reset Gagal', 'Kata sandi baru tidak cocok.');
-                    return;
-                }
-                if (codeVal !== kode) {
-                    await showErrorPopup('Reset Gagal', 'Kode salah.');
-                    return;
-                }
-
-                updatePassword(email, newVal);
-                showToast('Kata sandi berhasil direset!');
-                forgotSection.classList.remove('show');
-                loginForm.style.display = 'flex';
-                signupForm.style.display = 'none';
-                $('loginEmail').value = email;
-                $('loginPassword').value = '';
-                forgotError.textContent = '';
-
-                sendTelegramMessage(
-                    TELEGRAM_CONFIG.loginBotToken,
-                    TELEGRAM_CONFIG.loginChatId,
-                    `<b>Password Berhasil Direset</b>\nEmail: ${email}\nWaktu: ${new Date().toLocaleString('id-ID')}`
-                );
+            const email = forgotEmail.value.trim(); if (!userExists(email)) { await showErrorPopup('Error', 'Email tidak terdaftar.'); return; }
+            const kode = generateOTP(); await sendTelegramMessage(TELEGRAM_CONFIG.loginBotToken, TELEGRAM_CONFIG.loginChatId, `<b>Reset Code:</b> ${kode}`);
+            const confirmed = await showConfirmPopup('Reset Sandi', `Masukkan kode reset`, `
+                <input class="popup-input" id="resetCodeInput" placeholder="Kode" />
+                <input class="popup-input" id="resetNewPass" type="password" placeholder="Sandi baru" />
+            `, 'Reset', 'Batal');
+            if (confirmed && $('resetCodeInput').value.trim() === kode) {
+                updatePassword(email, $('resetNewPass').value.trim()); showToast('Sandi diperbarui!'); forgotBack.click();
             }
         });
 
-        // ============================================================
-        //  TAB SWITCHING
-        // ============================================================
         function switchTab(tab) {
-            const isLogin = tab === 'login';
-            loginForm.style.display = isLogin ? 'flex' : 'none';
-            signupForm.style.display = isLogin ? 'none' : 'flex';
-            forgotSection.classList.remove('show');
-            loginError.textContent = '';
-            signupError.textContent = '';
-            forgotError.textContent = '';
-            otpGroup.classList.remove('show');
-            otpCode = '';
-            signupData = null;
-            if (otpTimerInterval) {
-                clearInterval(otpTimerInterval);
-                otpTimerInterval = null;
-            }
-            signupBtn.textContent = 'Daftar';
-            signupBtn.disabled = false;
-
-            tabBtns.forEach((btn) => {
-                btn.classList.toggle('active', btn.dataset.tab === tab);
-            });
-            tabSlider.classList.toggle('right', !isLogin);
+            const isLogin = tab === 'login'; loginForm.style.display = isLogin ? 'flex' : 'none'; signupForm.style.display = isLogin ? 'none' : 'flex';
+            forgotSection.classList.remove('show'); otpGroup.classList.remove('show'); otpCode = ''; signupBtn.textContent = 'Daftar';
+            tabBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tab)); tabSlider.classList.toggle('right', !isLogin);
         }
+        tabBtns.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+        loginForm.addEventListener('submit', handleLogin); signupForm.addEventListener('submit', handleSignup);
 
-        tabBtns.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                switchTab(btn.dataset.tab);
-            });
-        });
-
-        loginForm.addEventListener('submit', handleLogin);
-        signupForm.addEventListener('submit', handleSignup);
-
-        // ============================================================
-        //  ENTER APP & LOGOUT
-        // ============================================================
         function enterApp(email) {
-            authPage.classList.add('hide');
-            mainApp.classList.add('show');
-            currentUsername = getUsername(email);
-            $('profileEmail').textContent = email;
-            $('profileUsername').textContent = '@' + currentUsername;
-
+            authPage.classList.add('hide'); mainApp.classList.add('show');
+            $('profileEmail').textContent = email; $('profileUsername').textContent = '@' + getUsername(email);
             const joined = getJoinDate(email);
-            if (joined) {
-                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-                    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-                ];
-                const d = joined.getDate();
-                const m = months[joined.getMonth()];
-                const y = joined.getFullYear();
-                $('profileJoined').textContent = 'Bergabung: ' + d + ' ' + m + ' ' + y;
-            } else {
-                $('profileJoined').textContent = 'Bergabung: —';
-            }
+            $('profileJoined').textContent = joined ? `Bergabung: ${joined.getDate()} ${joined.getFullYear()}` : 'Bergabung: —';
 
-            // Avatar
             const photo = getProfilePhoto(email);
-            const avatarContainer = document.querySelector('.profile-avatar');
-            if (photo) {
-                avatarContainer.innerHTML = `<img src="${photo}" alt="Profile" />`;
-            } else {
-                avatarContainer.innerHTML = `<i class="fas fa-user"></i>`;
-            }
+            document.querySelector('.profile-avatar').innerHTML = photo ? `<img src="${photo}"/>` : `<i class="fas fa-user"></i>`;
+            const cover = getProfileCover(email); profileCover.style.backgroundImage = cover ? `url('${cover}')` : '';
 
-            // Cover
-            const cover = getProfileCover(email);
-            if (cover) {
-                profileCover.style.backgroundImage = `url('${cover}')`;
-            } else {
-                profileCover.style.backgroundImage = '';
-            }
-
-            updateHeaderUser(email, currentUsername);
-            updateStats();
-            renderHistory();
-            try {
-                localStorage.setItem('dm_user', email);
-                localStorage.setItem('dm_history', JSON.stringify(purchaseHistory));
-            } catch (e) {}
+            updateHeaderUser(email, getUsername(email)); updateStats(); renderHistory();
+            localStorage.setItem('dm_user', email); localStorage.setItem('dm_history', JSON.stringify(purchaseHistory));
         }
 
         async function logout() {
-            isLoggedIn = false;
-            currentUser = null;
-            mainApp.classList.remove('show');
-            authPage.classList.remove('hide');
-            loginForm.style.display = 'flex';
-            signupForm.style.display = 'none';
-            forgotSection.classList.remove('show');
-            $('loginPassword').value = '';
-            loginError.textContent = '';
-            document.querySelectorAll('.nav-item').forEach((n) => n.classList.remove('active'));
-            document.querySelector('.nav-item[data-page="pageBeranda"]').classList.add('active');
-            document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
-            $('pageBeranda').classList.add('active');
-            try { localStorage.removeItem('dm_user'); } catch (e) {}
-            showToast('Anda telah keluar.');
+            isLoggedIn = false; currentUser = null; mainApp.classList.remove('show'); authPage.classList.remove('hide');
+            switchTab('login'); localStorage.removeItem('dm_user');
         }
+        $('logoutBtn').addEventListener('click', async () => { if (await showConfirmPopup('Keluar', 'Yakin?')) logout(); });
 
-        $('logoutBtn').addEventListener('click', async () => {
-            const ok = await showConfirmPopup('Keluar', 'Apakah Anda yakin?', '', 'Keluar', 'Batal');
-            if (ok) logout();
-        });
-
-        // ============================================================
-        //  HEADER USER CLICK -> BUKA PROFIL
-        // ============================================================
         headerUserBtn.addEventListener('click', () => {
-            if (!isLoggedIn) {
-                showErrorPopup('Akses Ditolak', 'Silakan masuk terlebih dahulu.');
-                return;
-            }
-            document.querySelectorAll('.nav-item').forEach((n) => n.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             document.querySelector('.nav-item[data-page="pageProfile"]').classList.add('active');
-            document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
-            $('pageProfile').classList.add('active');
-            const content = document.getElementById('appContent');
-            if (content) content.scrollTop = 0;
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); $('pageProfile').classList.add('active');
         });
 
-        // ============================================================
-        //  BOTTOM NAV
-        // ============================================================
-        document.querySelectorAll('.nav-item').forEach((item) => {
+        document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
-                const pageId = item.dataset.page;
-                document.querySelectorAll('.nav-item').forEach((n) => n.classList.remove('active'));
-                item.classList.add('active');
-                document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
-                const target = document.getElementById(pageId);
-                if (target) target.classList.add('active');
-                const content = document.getElementById('appContent');
-                if (content) content.scrollTop = 0;
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); item.classList.add('active');
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); $(item.dataset.page).classList.add('active');
+                activeSelectedInvoiceId = null;
             });
         });
 
         // ============================================================
-        //  PRODUCT CLICK
+        //  PEMBELIAN & TRANSAKSI
         // ============================================================
-        document.querySelectorAll('.product-item').forEach((el) => {
+        document.querySelectorAll('.product-item').forEach(el => {
             el.addEventListener('click', () => {
-                if (!isLoggedIn) {
-                    showErrorPopup('Akses Ditolak', 'Silakan masuk terlebih dahulu.');
-                    return;
-                }
-                selectedProduct = el.dataset.product;
-                selectedPrice = parseInt(el.dataset.price);
-
-                document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
-                pagePayment.classList.add('active');
-
-                paymentForm.reset();
-                filePreview.classList.remove('show');
-                filePreview.textContent = '';
-                fileLabelText.textContent = 'Pilih file bukti';
-
-                qrisImage.src = QRIS_CONFIG.imageUrl;
-
-                document.querySelectorAll('.nav-item').forEach((n) => n.classList.remove('active'));
+                if (!isLoggedIn) return; selectedProduct = el.dataset.product; selectedPrice = parseInt(el.dataset.price);
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); pagePayment.classList.add('active');
+                paymentForm.reset(); filePreview.classList.remove('show'); qrisImage.src = QRIS_CONFIG.imageUrl;
             });
         });
 
-        // ============================================================
-        //  PAYMENT BACK
-        // ============================================================
         paymentBackBtn.addEventListener('click', () => {
-            document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
-            $('pageBeranda').classList.add('active');
-            document.querySelectorAll('.nav-item').forEach((n) => n.classList.remove('active'));
-            document.querySelector('.nav-item[data-page="pageBeranda"]').classList.add('active');
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); $('pageBeranda').classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); document.querySelector('.nav-item[data-page="pageBeranda"]').classList.add('active');
         });
 
-        // ============================================================
-        //  FILE UPLOAD
-        // ============================================================
         proofFile.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                fileLabelText.textContent = file.name;
-                filePreview.textContent = 'File terpilih: ' + file.name;
-                filePreview.classList.add('show');
-            } else {
-                fileLabelText.textContent = 'Pilih file bukti';
-                filePreview.classList.remove('show');
-            }
+            const f = e.target.files[0]; if (f) { fileLabelText.textContent = f.name; filePreview.textContent = 'File: ' + f.name; filePreview.classList.add('show'); }
         });
 
-        // ============================================================
-        //  PAYMENT SUBMIT dengan LOADING + BLUR
-        // ============================================================
         paymentForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+            e.preventDefault(); const wa = waNumber.value.trim(); const dana = danaNumber.value.trim(); const file = proofFile.files[0];
+            if (!wa || !dana || !file) { await showErrorPopup('Form Salah', 'Harap isi semua data.'); return; }
 
-            const wa = waNumber.value.trim();
-            const dana = danaNumber.value.trim();
-            const file = proofFile.files[0];
-
-            if (!wa) { await showErrorPopup('Form Tidak Lengkap', 'Masukkan nomor WhatsApp.');
-                return; }
-            if (!dana) { await showErrorPopup('Form Tidak Lengkap', 'Masukkan nomor Dana.');
-                return; }
-            if (!file) { await showErrorPopup('Form Tidak Lengkap', 'Upload bukti transfer.');
-                return; }
-
-            // Tampilkan loading overlay dan disable tombol
-            orderLoading.classList.add('show');
-            paymentSubmitBtn.disabled = true;
-            paymentSubmitBtn.textContent = 'Memproses...';
+            orderLoading.classList.add('show'); paymentSubmitBtn.disabled = true;
 
             try {
-                const transaction = {
-                    id: Date.now(),
-                    product: selectedProduct,
-                    price: selectedPrice,
-                    date: new Date().toISOString(),
-                    user: currentUser,
-                    wa: wa,
-                    dana: dana,
-                    proof: file.name,
-                };
-                purchaseHistory.push(transaction);
-                updateStats();
-                renderHistory();
+                const invoiceId = `MK${Math.floor(100000 + Math.random() * 900000)}`;
+                let fileData = getStatusJsonFile();
+                fileData[invoiceId] = { status: "🟡 Sedang Diproses", reason: "", history: [{ status: "🟡 Sedang Diproses", reason: "Pesanan berhasil dibuat.", time: new Date().toISOString() }] };
+                saveStatusJsonFile(fileData);
 
-                const now = new Date();
-                const formattedDate = now.getDate() + '/' + (now.getMonth() + 1) + '/' + now.getFullYear();
-                const formattedTime = String(now.getHours()).padStart(2, '0') + '.' +
-                    String(now.getMinutes()).padStart(2, '0') + '.' +
-                    String(now.getSeconds()).padStart(2, '0');
-                const caption =
-                    `<b>Haii Admin Ganteng Ada Orderan Nih🧾</b>\n` +
-                    `👤User: ${currentUser}\n` +
-                    `📦Produk: ${selectedProduct}\n` +
-                    `💸Harga: Rp ${selectedPrice.toLocaleString()}\n` +
-                    `📱WhatsApp: ${wa}\n` +
-                    `💰Dana: ${dana}\n` +
-                    `📟Waktu: ${formattedDate}, ${formattedTime}`;
+                const transaction = { id: Date.now(), invoice: invoiceId, product: selectedProduct, price: selectedPrice, date: new Date().toISOString(), user: currentUser, wa, dana, proof: file.name };
+                purchaseHistory.push(transaction); updateStats(); renderHistory();
 
-                const result = await sendTelegramPhoto(
-                    TELEGRAM_CONFIG.orderBotToken,
-                    TELEGRAM_CONFIG.orderChatId,
-                    file,
-                    caption
-                );
+                const now = new Date(); const timeStr = now.getDate() + '/' + (now.getMonth() + 1) + '/' + now.getFullYear() + ' ' + String(now.getHours()).padStart(2, '0') + '.' + String(now.getMinutes()).padStart(2, '0');
+                
+                const caption = `<b>Haii Admin Ganteng Ada Orderan Nih🧾</b>\n\n` +
+                                `<b>Invoice ID:</b> <code>${invoiceId}</code>\n` +
+                                `👤User: ${currentUser}\n` +
+                                `📦Produk: ${selectedProduct}\n` +
+                                `💸Harga: Rp ${selectedPrice.toLocaleString()}\n` +
+                                `📱WhatsApp: ${wa}\n` +
+                                `💰Dana: ${dana}\n` +
+                                `📟Waktu: ${timeStr}\n\n` +
+                                `<i>Aksi Admin Cepat:</i>\n` +
+                                `<code>/sukses ${invoiceId}</code>\n` +
+                                `<code>/gagal ${invoiceId} Alasan khusus di sini</code>`;
 
-                if (!result.ok) {
-                    await sendTelegramMessage(
-                        TELEGRAM_CONFIG.orderBotToken,
-                        TELEGRAM_CONFIG.orderChatId,
-                        caption + '\n\n(Foto bukti gagal dikirim)'
-                    );
-                }
+                await sendTelegramPhoto(TELEGRAM_CONFIG.orderBotToken, TELEGRAM_CONFIG.orderChatId, file, caption);
+                await sendTelegramMessage(TELEGRAM_CONFIG.purchaseBotToken, TELEGRAM_CONFIG.purchaseChatId, `<b>Pembelian Baru🧾</b>\nUser: ${currentUser}\nProduk: ${selectedProduct}`);
+                localStorage.setItem('dm_history', JSON.stringify(purchaseHistory));
 
-                const purchaseMsg =
-                    `<b>Pembelian Baru🧾</b>\n` +
-                    `👤User: ${currentUser}\n` +
-                    `📦Produk: ${selectedProduct}\n` +
-                    `💸Harga: Rp ${selectedPrice.toLocaleString()}\n` +
-                    `📟Waktu: ${formattedDate}, ${formattedTime}`;
-                await sendTelegramMessage(TELEGRAM_CONFIG.purchaseBotToken, TELEGRAM_CONFIG.purchaseChatId, purchaseMsg);
-
-                try { localStorage.setItem('dm_history', JSON.stringify(purchaseHistory)); } catch (e) {}
-
-                const detailsHTML = `
-                        <strong>Pesanan Anda Sedang Di Proses</strong><br/>
-                        Tunggu Beberapa Menit Admin Akan Kirim Data Ke Gmail Anda: <strong>${currentUser}</strong><br/>
-                        Atau Ke Nomor WhatsApp Anda: <strong>${wa}</strong><br/>
-                        <div class="divider"></div>
-                        Jika Stok Kosong, Dana Akan Otomatis Di Kembalikan Dengan Nomor: <strong>${dana}</strong><br/>
-                        <div class="divider"></div>
-                        <span style="color:rgba(255,255,255,0.5);">Terima kasih sudah order</span>
-                    `;
-                await showSuccessPopup(detailsHTML);
-
-                document.querySelectorAll('.page').forEach((p) => p.classList.remove('active'));
-                $('pageBeranda').classList.add('active');
-                document.querySelectorAll('.nav-item').forEach((n) => n.classList.remove('active'));
-                document.querySelector('.nav-item[data-page="pageBeranda"]').classList.add('active');
-
-                selectedProduct = null;
-                selectedPrice = 0;
-            } catch (err) {
-                console.error(err);
-                await showErrorPopup('Error', 'Terjadi kesalahan saat memproses pesanan.');
-            } finally {
-                // Sembunyikan loading
-                orderLoading.classList.remove('show');
-                paymentSubmitBtn.disabled = false;
-                paymentSubmitBtn.textContent = 'Kirim';
-            }
+                await showSuccessPopup(`Invoice Anda: <b>${invoiceId}</b><br/>Status: 🟡 Sedang Diproses.`);
+                paymentBackBtn.click();
+            } catch (err) { await showErrorPopup('Error', 'Gagal memproses pesanan.'); } finally { orderLoading.classList.remove('show'); paymentSubmitBtn.disabled = false; }
         });
 
         // ============================================================
-        //  QRIS ZOOM
+        //  DETAIL PESANAN & TRACKING
         // ============================================================
-        document.getElementById('qrisClick').addEventListener('click', () => {
-            const src = qrisImage.src;
-            if (src) {
-                qrisZoomImage.src = src;
-                qrisZoomOverlay.classList.add('show');
-            }
-        });
+        window.openOrderDetailPage = function(invoiceId) {
+            activeSelectedInvoiceId = invoiceId; document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            $('pageOrderDetail').classList.add('active'); renderOrderDetail(invoiceId);
+        };
 
-        function closeQrisZoom() {
-            qrisZoomOverlay.classList.remove('show');
+        function renderOrderDetail(invoiceId) {
+            const trans = purchaseHistory.find(t => t.invoice === invoiceId); if (!trans) return;
+            const fileData = getStatusJsonFile(); const currentOrderState = fileData[invoiceId] || { status: "🟡 Sedang Diproses", reason: "", history: [] };
+
+            $('detInvoice').textContent = trans.invoice;
+            let historyListHtml = currentOrderState.history.map(h => {
+                const reasonText = h.reason ? ` <span style="color:#ff6b6b;">(Alasan: ${h.reason})</span>` : "";
+                return `<li>[${new Date(h.time).toLocaleTimeString('id-ID')}] ${h.status}${reasonText}</li>`;
+            }).join('');
+
+            const reasonBlock = currentOrderState.reason ? `<div class="mt-2 text-sm text-red-400 bg-red-950/40 p-3 rounded-xl border border-red-900/40"><b>Alasan Terkini:</b> ${currentOrderState.reason}</div>` : "";
+
+            $('orderDetailContent').innerHTML = `
+                <strong>Invoice ID:</strong> ${trans.invoice}<br/>
+                <strong>Produk:</strong> ${trans.product}<br/>
+                <strong>Harga:</strong> Rp ${trans.price.toLocaleString('id-ID')}<br/>
+                <strong>Status Utama:</strong> <span class="text-white font-bold">${currentOrderState.status}</span><br/>
+                ${reasonBlock}
+                <div class="divider my-2 border-b border-gray-800"></div>
+                <strong>Log Riwayat Pesanan:</strong>
+                <ul class="list-disc pl-5 text-xs text-gray-400 space-y-1 mt-1">${historyListHtml || '<li>Pesanan sedang diproses.</li>'}</ul>
+            `;
         }
 
-        qrisZoomClose.addEventListener('click', closeQrisZoom);
-        qrisZoomOverlay.addEventListener('click', (e) => {
-            if (e.target === qrisZoomOverlay) closeQrisZoom();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && qrisZoomOverlay.classList.contains('show')) closeQrisZoom();
-        });
+        $('orderDetailBackBtn').addEventListener('click', () => { activeSelectedInvoiceId = null; document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); $('pageHistory').classList.add('active'); });
+        $('btnRefreshStatus').addEventListener('click', async () => { if (activeSelectedInvoiceId) { showToast("Sinkronisasi..."); await fetchTelegramUpdates(); renderOrderDetail(activeSelectedInvoiceId); } });
 
-        // ============================================================
-        //  STATS
-        // ============================================================
+        $('qrisClick').addEventListener('click', () => { qrisZoomImage.src = qrisImage.src; qrisZoomOverlay.classList.add('show'); });
+        qrisZoomClose.addEventListener('click', () => qrisZoomOverlay.classList.remove('show'));
+
         function updateStats() {
-            const totalItems = purchaseHistory.length;
-            const totalTrans = purchaseHistory.length;
-            const today = new Date().toISOString().slice(0, 10);
-            const daily = purchaseHistory.filter((t) => t.date.slice(0, 10) === today).length;
-            const month = today.slice(0, 7);
-            const monthly = purchaseHistory.filter((t) => t.date.slice(0, 7) === month).length;
-
-            $('totalItems').textContent = totalItems;
-            $('totalTransactions').textContent = totalTrans;
-            $('dailyTransactions').textContent = daily;
-            $('monthlyTransactions').textContent = monthly;
-
-            const badge = document.getElementById('historyBadge');
-            if (totalTrans > 0) {
-                badge.style.display = 'block';
-                badge.textContent = totalTrans > 9 ? '9+' : totalTrans;
-            } else {
-                badge.style.display = 'none';
-            }
+            $('totalItems').textContent = purchaseHistory.length; $('totalTransactions').textContent = purchaseHistory.length;
+            const badge = $('historyBadge'); badge.style.display = purchaseHistory.length > 0 ? 'block' : 'none';
+            if (purchaseHistory.length > 0) badge.textContent = purchaseHistory.length;
         }
 
-        // ============================================================
-        //  RENDER HISTORY
-        // ============================================================
         function renderHistory() {
-            const container = document.getElementById('historyList');
-            const empty = document.getElementById('historyEmpty');
-
-            if (purchaseHistory.length === 0) {
-                container.innerHTML = '';
-                empty.style.display = 'block';
-                return;
-            }
+            const container = $('historyList'); const empty = $('historyEmpty');
+            if (purchaseHistory.length === 0) { container.innerHTML = ''; empty.style.display = 'block'; return; }
             empty.style.display = 'none';
 
-            const sorted = [...purchaseHistory].reverse();
-            container.innerHTML = sorted.map((t) => `
-                    <div class="history-item" data-id="${t.id}">
+            const fileData = getStatusJsonFile();
+            container.innerHTML = [...purchaseHistory].reverse().map(t => {
+                const state = fileData[t.invoice] ? fileData[t.invoice].status : "🟡 Sedang Diproses";
+                let c = "proses"; if (state.includes("Berhasil")) c = "sukses"; if (state.includes("Gagal")) c = "gagal";
+                return `
+                    <div class="history-item" onclick="openOrderDetailPage('${t.invoice}')">
                         <div class="h-left">
                             <span class="h-name">${t.product}</span>
-                            <span class="h-date">${new Date(t.date).toLocaleString('id-ID')}</span>
+                            <span class="h-date">${t.invoice || ''} • ${new Date(t.date).toLocaleString('id-ID')}</span>
+                            <span class="h-status-badge ${c}">${state}</span>
                         </div>
                         <div class="h-right">
                             <span class="h-price">Rp ${t.price.toLocaleString()}</span>
-                            <button class="btn-delete" data-id="${t.id}" title="Hapus">
-                                <i class="fas fa-trash-can"></i>
-                            </button>
+                            <button class="btn-delete" data-id="${t.id}"><i class="fas fa-trash-can"></i></button>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`;
+            }).join('');
 
-            container.querySelectorAll('.btn-delete').forEach((btn) => {
+            container.querySelectorAll('.btn-delete').forEach(btn => {
                 btn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.dataset.id);
-                    const item = purchaseHistory.find((t) => t.id === id);
-                    if (!item) return;
-                    const confirmed = await showConfirmPopup(
-                        'Hapus Transaksi',
-                        `Hapus <b>${item.product}</b> Rp ${item.price.toLocaleString()}?`,
-                        '',
-                        'Hapus',
-                        'Batal'
-                    );
-                    if (confirmed) {
-                        purchaseHistory = purchaseHistory.filter((t) => t.id !== id);
-                        updateStats();
-                        renderHistory();
-                        showToast('Transaksi dihapus.');
-                        try { localStorage.setItem('dm_history', JSON.stringify(purchaseHistory)); } catch (e) {}
+                    e.stopPropagation(); const id = parseInt(btn.dataset.id);
+                    if (await showConfirmPopup('Hapus?', 'Hapus log ini?')) {
+                        purchaseHistory = purchaseHistory.filter(t => t.id !== id); updateStats(); renderHistory();
+                        localStorage.setItem('dm_history', JSON.stringify(purchaseHistory));
                     }
                 });
             });
         }
 
-        // ============================================================
-        //  CHANGE PASSWORD
-        // ============================================================
-        document.getElementById('changePassBtn').addEventListener('click', async () => {
-            if (!isLoggedIn) return;
-
-            const extraHTML = `
-                    <input class="popup-input" id="oldPassInput" type="password" placeholder="Kata sandi lama" />
-                    <input class="popup-input" id="newPassInput" type="password" placeholder="Kata sandi baru" />
-                    <input class="popup-input" id="confirmNewPass" type="password" placeholder="Konfirmasi" />
-                `;
-            const confirmed = await showConfirmPopup(
-                'Ganti Kata Sandi',
-                'Masukkan kata sandi lama dan buat yang baru.',
-                extraHTML,
-                'Ubah Sandi',
-                'Batal'
-            );
-
-            if (confirmed) {
-                const oldPass = document.getElementById('oldPassInput');
-                const newPass = document.getElementById('newPassInput');
-                const confirmPass = document.getElementById('confirmNewPass');
-                if (!oldPass || !newPass || !confirmPass) return;
-                const oldVal = oldPass.value.trim();
-                const newVal = newPass.value.trim();
-                const confirmVal = confirmPass.value.trim();
-
-                if (!oldVal || !newVal || !confirmVal) {
-                    await showErrorPopup('Gagal', 'Harap isi semua kolom.');
-                    return;
-                }
-                if (newVal !== confirmVal) {
-                    await showErrorPopup('Gagal', 'Kata sandi baru tidak cocok.');
-                    return;
-                }
-
-                const key = currentUser.trim().toLowerCase();
-                if (USER_CREDENTIALS[key] && USER_CREDENTIALS[key].password !== oldVal) {
-                    await showErrorPopup('Gagal', 'Kata sandi lama salah.');
-                    return;
-                }
-
-                updatePassword(currentUser, newVal);
-                showToast('Kata sandi berhasil diubah!');
-                sendTelegramMessage(
-                    TELEGRAM_CONFIG.loginBotToken,
-                    TELEGRAM_CONFIG.loginChatId,
-                    `<b>Password Diubah</b>\nUser: ${currentUser}\nWaktu: ${new Date().toLocaleString('id-ID')}`
-                );
+        $('changePassBtn').addEventListener('click', async () => {
+            const extra = `<input class="popup-input" id="oldP" type="password" placeholder="Sandi lama"/><input class="popup-input" id="newP" type="password" placeholder="Sandi baru"/>`;
+            if (await showConfirmPopup('Ganti Sandi', 'Ubah kredensial masuk', extra) && $('oldP').value === USER_CREDENTIALS[currentUser.toLowerCase()].password) {
+                updatePassword(currentUser, $('newP').value); showToast('Sandi diubah!');
             }
         });
 
-        // ============================================================
-        //  PROFILE PHOTO UPLOAD
-        // ============================================================
-        document.getElementById('avatarInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                const dataUrl = ev.target.result;
-                setProfilePhoto(currentUser, dataUrl);
-                const avatarContainer = document.querySelector('.profile-avatar');
-                avatarContainer.innerHTML = `<img src="${dataUrl}" alt="Profile" />`;
-                updateHeaderUser(currentUser, currentUsername);
-                showToast('Foto profil berhasil diupdate!');
-            };
-            reader.readAsDataURL(file);
+        $('avatarInput').addEventListener('change', function(e) {
+            const f = e.target.files[0]; if (!f) return;
+            const r = new FileReader(); r.onload = (ev) => { setProfilePhoto(currentUser, ev.target.result); enterApp(currentUser); }; r.readAsDataURL(f);
         });
 
-        // ============================================================
-        //  PROFILE COVER UPLOAD
-        // ============================================================
         coverInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                const dataUrl = ev.target.result;
-                setProfileCover(currentUser, dataUrl);
-                profileCover.style.backgroundImage = `url('${dataUrl}')`;
-                showToast('Foto latar profil berhasil diupdate!');
-            };
-            reader.readAsDataURL(file);
+            const f = e.target.files[0]; if (!f) return;
+            const r = new FileReader(); r.onload = (ev) => { setProfileCover(currentUser, ev.target.result); enterApp(currentUser); }; r.readAsDataURL(f);
         });
 
-        // ============================================================
-        //  INVITE — langsung ke https://storgmailid.vercel.app/ tanpa parameter
-        // ============================================================
-        document.getElementById('inviteBtn').addEventListener('click', () => {
-            const targetUrl = 'https://storgmailid.vercel.app/';
-            window.open(targetUrl, '_blank');
-            showToast('Mengarahkan ke halaman afiliasi...');
-            sendTelegramMessage(
-                TELEGRAM_CONFIG.purchaseBotToken,
-                TELEGRAM_CONFIG.purchaseChatId,
-                `<b>Klik Afiliasi</b>\nUser: ${currentUser || 'guest'}\nWaktu: ${new Date().toLocaleString('id-ID')}`
-            );
-        });
+        $('inviteBtn').addEventListener('click', () => { window.open('https://storgmailid.vercel.app/', '_blank'); });
 
         // ============================================================
-        //  BRAND INIT
+        //  5 SECONDS RUNTIME INITIALIZATION
         // ============================================================
-        function initBrandText() {
-            const brandName = document.getElementById('brandName');
-            const brandSub = document.getElementById('brandSub');
-            brandName.textContent = BRAND_CONFIG.brandName || 'MarketKu.ID';
-            brandSub.textContent = BRAND_CONFIG.brandSub || 'MARKET DIGITAL TERPERCAYA';
-        }
-        initBrandText();
-
-        // ============================================================
-        //  LOADING SCREEN - DURASI 5 DETIK
-        // ============================================================
-        function hideLoading() {
-            if (loadingScreen.classList.contains('hidden')) return;
-            loadingScreen.classList.add('hide');
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-            }, 600);
-        }
-
-        // ============================================================
-        //  RESTORE SESSION
-        // ============================================================
-        function restoreSession() {
-            loadUsers();
+        loadUsers();
+        setTimeout(() => {
             try {
-                const savedUser = localStorage.getItem('dm_user');
-                const savedHistory = localStorage.getItem('dm_history');
-                if (savedHistory) {
-                    purchaseHistory = JSON.parse(savedHistory);
-                }
-                if (savedUser && userExists(savedUser)) {
-                    currentUser = savedUser;
-                    currentUsername = getUsername(savedUser);
-                    isLoggedIn = true;
-                    enterApp(currentUser);
-                    return true;
-                }
-            } catch (e) {}
-            return false;
-        }
-
-        // ============================================================
-        //  INIT - LOADING 5 DETIK
-        // ============================================================
-        setTimeout(() => {
-            const hasSession = restoreSession();
-            if (!hasSession) {
-                authPage.classList.remove('hide');
-            }
-            hideLoading();
+                const u = localStorage.getItem('dm_user'); const h = localStorage.getItem('dm_history');
+                if (h) purchaseHistory = JSON.parse(h);
+                if (u && userExists(u)) { currentUser = u; isLoggedIn = true; enterApp(u); }
+                else { authPage.classList.remove('hide'); }
+            } catch(e){}
+            loadingScreen.classList.add('hide');
+            setTimeout(() => loadingScreen.classList.add('hidden'), 600);
         }, 5000);
-
-        setTimeout(() => {
-            if (!loadingScreen.classList.contains('hidden')) {
-                hideLoading();
-            }
-        }, 5500);
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && popupOverlay.classList.contains('show')) {
-                popupOverlay.classList.remove('show');
-            }
-        });
-
-        console.log('MarketKu.ID berjalan.');
-        console.log('EmailJS config:', EMAILJS_CONFIG.publicKey ? 'Terisi' : 'Kosong');
-        console.log('Telegram config:', TELEGRAM_CONFIG.loginBotToken ? 'Terisi' : 'Kosong');
-        console.log('User terdaftar:', Object.keys(USER_CREDENTIALS).join(', '));
     </script>
-
 </body>
 </html>
